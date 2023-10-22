@@ -18,84 +18,19 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script>
-  function openFileInput() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.style.display = 'none';
-    input.addEventListener('change', handleFileUpload);
-    document.body.appendChild(input);
-    input.click();
-  }
-
-  function handleFileUpload(event) {
-    const file = event.target.files[0];
-      if (!file) return;
-        const formData = new FormData();
-    formData.append('file', file);
-          $.ajax({
-        url: 'Profil.aspx?function=AddPicture&filename='+file.name,
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(data) {
-            // Handle the success response here
-            console.log('Upload success:', data);
-        },
-        error: function(xhr, status, error) {
-            // Handle the error here
-            console.error('Upload error:', error);
-        },
-        cache: false
-    });
-   /* const formData = new FormData();
-    formData.append('file', file);
-
-    // Send the file to the server using AJAX
-    fetch('./Profil.aspx?function=AddPicture&filename='+file.name, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Server response:', data);
-      // After successful upload, append the image to the container.
-      const imageURL = data.imageURL; // Replace imageURL with the actual URL of the uploaded image.
-      appendImageToContainer(imageURL);
-    })
-    .catch(error => {
-      console.error('Error uploading file to server:', error);
-      // Handle the error, if any, during the file upload.
-    });*/
-  }
-
-  function appendImageToContainer(imageURL) {
-    // Create a new image block and append it to the container.
-    const imageContainer = document.getElementById('imageContainer');
-    const newImageBlock = document.createElement('div');
-    newImageBlock.className = 'imageBlock';
-    const newImage = document.createElement('img');
-    newImage.src = imageURL;
-    newImage.alt = 'New Image';
-    newImageBlock.appendChild(newImage);
-    imageContainer.appendChild(newImageBlock);
-  }
-
-
-
-
-
-
-    </script>
-    <div class="conatiner-fluid content-inner pb-0">
+    
+ <div class="conatiner-fluid content-inner pb-0">
         <div class="row">
 
             <div class="col-lg-4">
                 <div class="card">
+
                 <asp:Literal runat="server" ID="picturesHtmlLiteral"></asp:Literal>   
-                <asp:FileUpload ID="fileUpload" runat="server" />
+                <img src="add2.jpg" id="uploadImage" alt="Upload Image" />
+                    <form id="uploadForm" enctype="multipart/form-data">
+                    <input type="file" name="file" id="fileInput" accept="image/*" style="display: none;" />
+                    </form>
+
 
                 </div>
                 <div class="card">  
@@ -116,7 +51,6 @@
                             <div class="card-body">
                                 <div class="text-center">
                                     <div class="user-profile">
-                                        <%-- %>img src="../assets/images/avatars/LionelMessi.jpg" alt="profile-img" class="rounded-pill avatar-130 img-fluid"--%>
                                         <img runat="server" ID="imgProfile" alt="profile-img" class="rounded-pill avatar-130 img-fluid" />
 
                                     </div>
@@ -125,8 +59,8 @@
                                         <h3 class="d-inline-block"><asp:Label ID="lblFullName" runat="server"></asp:Label></h3>
 
                                         <p class="d-inline-block pl-3"></p>
-                                        <p class="mb-0">A small description that should be added by the footballer about himself</p>
-                                    </div>
+                                 <asp:TextBox ID="descriptionTextBox" runat="server" TextMode="MultiLine" CssClass="form-control" placeholder="Enter a small description about yourself"></asp:TextBox>
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +80,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Email: *</label>
-                                                        <input type="email" class="form-control" name="email" placeholder="Email Id" />
+                                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Id" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -163,7 +97,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="form-label">Password: *</label>
+                                                        <label class="form-label">Password: *</label><a href="Feed.aspx">Feed.aspx</a>
                                                         <input type="password" class="form-control" name="pwd" placeholder="Password" />
                                                     </div>
                                                 </div>
@@ -184,12 +118,12 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Email: </label>
-                                                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ReadOnly="true" ></asp:TextBox>                                                    </div>
+                                                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"  ></asp:TextBox>                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Username: </label>
-                                                        <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" ></asp:TextBox>
                                                        
                                                     </div>
                                                 </div>
@@ -261,32 +195,32 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">First Name: </label>
-                                                       <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control" ReadOnly ="true"></asp:TextBox>
+                                                       <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control" ></asp:TextBox>
 
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Last Name: </label>
-                                                        <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control" ReadOnly ="true"></asp:TextBox>
+                                                        <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control" ></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Contact No.: </label>
-                                                        <asp:TextBox ID="txtphNo" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox ID="txtphNo" runat="server" CssClass="form-control" ></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Date of Birth: </label>
-                                                       <asp:TextBox ID="txtDOB" runat="server" CssClass="form-control" ReadOnly ="true"></asp:TextBox>
+                                                       <asp:TextBox ID="txtDOB" runat="server" CssClass="form-control" ></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Pays: </label>
-                                                        <asp:TextBox ID="txtCountry" runat="server" CssClass="form-control" ReadOnly ="true"></asp:TextBox>
+                                                        <asp:TextBox ID="txtCountry" runat="server" CssClass="form-control" ></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -346,6 +280,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
                                         <button type="button" name="next" class="btn btn-primary next action-button float-end" value="Submit">Save</button>
                                     </div>
                                     <div>
@@ -354,14 +290,20 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
+                                                    <label class="form-label">Position: *</label>
+                                                    <asp:DropDownList ID="position" class="form-control" runat="server"></asp:DropDownList>
+                                                    </div>
+                                                    </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
                                                         <label class="form-label">Height: </label>
-                                                        <asp:TextBox ID="txtHeight" runat="server" CssClass="form-control" ReadOnly ="true"></asp:TextBox>
+                                                        <asp:TextBox ID="txtHeight" runat="server" CssClass="form-control" ></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Weight: </label>
-                                                        <asp:TextBox ID="txtWeight" runat="server" CssClass="form-control" ReadOnly ="true"></asp:TextBox>
+                                                        <asp:TextBox ID="txtWeight" runat="server" CssClass="form-control" ></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -378,13 +320,13 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                       <asp:TextBox ID="txtClub" runat="server" CssClass="form-control" ReadOnly ="true"></asp:TextBox>
+                                                       <asp:TextBox ID="txtClub" runat="server" CssClass="form-control" ></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
+                                    
                                 </fieldset>
                             </div>
                         </div>
@@ -400,11 +342,14 @@
 
                                         <div class="form-group">
                                             <label class="form-label">Upload Your Photo:</label>
-                                            <input type="file" class="form-control" name="pic" accept="image/*">
+                                             <asp:FileUpload class="form-control"  ID="fileUpload" runat="server" />
+<%--                                            <input type="file" class="form-control" name="pic" accept="image/*">--%>
                                         </div>
                                         
                                     </div>
-                                    <button type="button" name="next" class="btn btn-primary next action-button float-end" value="Submit">Save</button>
+                        <asp:Button ID="Save" runat="server" Text="Save" class="btn btn-primary next action-button float-end" value="submit" OnClick="UpdateButton_Click" />
+
+<%--                                    <button type="button" name="next" class="btn btn-primary next action-button float-end" value="Submit">Save</button>--%>
                                 </fieldset>
 
                             </div>
@@ -449,5 +394,17 @@
             </div>
         </div>
     </div>
+      <script>
+document.getElementById("uploadImage").addEventListener("click", function () {
+  document.getElementById("fileInput").click();
+});
 
+document.getElementById("fileInput").addEventListener("change", function () {
+  // Submit the form when the user selects a file (image)
+ // document.getElementById("uploadForm").submit();
+});
+
+
+  
+</script>
 </asp:Content>

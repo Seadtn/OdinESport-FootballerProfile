@@ -4,6 +4,22 @@
     <title>ODIN ESPORT | Footballeurs</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        function NotifAdministration(profileId,footballerId) {
+   
+        // Create an anchor element (link) with the profileId as a query parameter
+        var link = document.createElement('a');
+        link.href = 'Footballeurs.aspx?id=' + profileId+"&footballerId="+footballerId;
+        link.style.display = 'none'; // Hide the link
+
+        // Add the link to the document body
+        document.body.appendChild(link);
+
+        // Trigger a click on the link to perform the deletion
+        link.click();
+    
+        }
+        </script>
 
     <div class="conatiner-fluid content-inner pb-0">
         <div class="row">

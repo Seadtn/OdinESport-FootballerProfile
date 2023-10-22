@@ -149,28 +149,28 @@
                                                         <div class="form-group">
 
                                                             <label class="form-label">Email: *</label>
-                                                            <asp:TextBox ID="email" class="form-control" placeholder="Email Id" runat="server" TextMode="Email"></asp:TextBox>
+                                                            <asp:TextBox ID="email" class="form-control" placeholder="Email Id" runat="server" TextMode="Email" required></asp:TextBox>
 
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Username: *</label>
-                                                            <asp:TextBox ID="uname" class="form-control" placeholder="UserName" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="uname" class="form-control" placeholder="UserName" runat="server" required></asp:TextBox>
 
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Password: *</label>
-                                                            <asp:TextBox ID="pwd" class="form-control" TextMode="Password" placeholder="Password" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="pwd" class="form-control" TextMode="Password" placeholder="Password" runat="server" required></asp:TextBox>
 
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Confirm Password: *</label>
-                                                            <asp:TextBox ID="cpwd" class="form-control" TextMode="Password" placeholder="Confirm Password" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="cpwd" class="form-control" TextMode="Password" placeholder="Confirm Password" runat="server" autocomplete="new-password"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -191,32 +191,32 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">First Name: *</label>
-                                                            <asp:TextBox ID="fname" class="form-control" placeholder="First Name" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="fname" class="form-control" placeholder="First Name" runat="server" required></asp:TextBox>
 
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Last Name: *</label>
-                                                            <asp:TextBox ID="lname" class="form-control" placeholder="Last Name" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="lname" class="form-control" placeholder="Last Name" runat="server" required></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Contact No.: *</label>
-                                                            <asp:TextBox ID="phno" class="form-control" placeholder="" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="phno" class="form-control" placeholder="" runat="server" required></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Date of Birth: *</label>
-                                                            <asp:TextBox ID="daob" runat="server" placeholder="Contact No." type="date" class="form-control"></asp:TextBox>
+                                                            <asp:TextBox ID="daob" runat="server" placeholder="Contact No." type="date" class="form-control" required></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Country: *</label>
-                                                            <asp:TextBox ID="cntry" class="form-control" placeholder="Alternate Contact No" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="cntry" class="form-control" placeholder="Country" runat="server" required></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -236,15 +236,21 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <label class="form-label">Position: *</label>
+                                                    <asp:DropDownList ID="position" class="form-control" runat="server"></asp:DropDownList>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Height: *</label>
-                                                            <asp:TextBox ID="height" class="form-control" placeholder="height" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="height" class="form-control" placeholder="height" runat="server" required></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Weight: *</label>
-                                                            <asp:TextBox ID="weight" class="form-control" placeholder="weight" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="weight" class="form-control" placeholder="weight" runat="server" required></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -262,7 +268,7 @@
                                                             <label class="form-label">Club: *</label>
                                                            
 
-                                                            <textarea class="form-control" runat="server" id="club" rows="5"></textarea>
+                                                            <textarea class="form-control" runat="server" id="club" rows="5" required></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -282,7 +288,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-label">Upload Your Photo:</label>
-                                                    <asp:FileUpload class="form-control" ID="fileUpload" runat="server" />
+                                                    <asp:FileUpload class="form-control"  ID="fileUpload" runat="server"  required/>
                                                 </div>
                                                 <%--                                    <div class="form-group">
                                     <label class="form-label">Upload Signature Photo:</label>
@@ -309,7 +315,7 @@
                                                 <br>
                                                 <div class="row justify-content-center">
                                                     <div class="col-3">
-                                                        <img width="50%" src="../../assets/images/pages/img-success.png" class="img-fluid" alt="fit-image">
+                                                        <img width="500" src="../../assets/images/pages/img-success.png" class="img-fluid" alt="fit-image">
                                                     </div>
                                                 </div>
                                                 <br>
@@ -330,7 +336,7 @@
                     <div class="sign-bg sign-bg-right">
                         <svg id="Calque_2" width="280" opacity="0.05" height="230" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 736 526.21">
                             <defs>
-                                <style>
+                                <style type="text/css">
                                     .cls-1 {
                                         fill: #0d055b;
                                     }

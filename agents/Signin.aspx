@@ -31,7 +31,28 @@
       
       <!-- RTL Css -->
       <link rel="stylesheet" href="../../assets/css/rtl.min.css"/>
-      
+      <style>
+        #popupMessage {
+            display: none;
+            position: fixed;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f9f9f9;
+            border: 2px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        .show-popup {
+            display: block !important; /* Override display property to show the popup */
+        }
+    </style>
+      <script>
+        function showPopup(message) {
+            document.getElementById("popupText").innerText = message;
+            document.getElementById("popupMessage").classList.add("show-popup");
+        }
+    </script>
   </head>
   <body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
     <!-- loader Start -->
@@ -62,20 +83,24 @@
                            </a>
                            <h2 class="mb-2 text-center">Sign In</h2>
                            <p class="text-center">Login to stay connected.</p>
-                           <form  action="profil.aspx">
+                           <form runat="server"  >
                               <div class="row">
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="email" class="form-label">Email</label>
-                                       <input type="email" class="form-control" id="email" aria-describedby="email" placeholder=" ">
+                                       <asp:TextBox ID="email" class="form-control" placeholder="Email " runat="server" TextMode="Email"></asp:TextBox>
                                     </div>
                                  </div>
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="password" class="form-label">Password</label>
-                                       <input type="password" class="form-control" id="password" aria-describedby="password" placeholder=" ">
+                                     <asp:TextBox ID="password" class="form-control" TextMode="Password" placeholder="Password" runat="server" ></asp:TextBox>
                                     </div>
                                  </div>
+                                  <div id="popupMessage" style=" display: none;">
+                                     <p id="popupText"></p>
+                                  </div>
+                                  
                                  <div class="col-lg-12 d-flex justify-content-between">
                                     <div class="form-check mb-3">
                                        <input type="checkbox" class="form-check-input" id="customCheck1">
@@ -85,8 +110,11 @@
                                  </div>
                               </div>
                               <div class="d-flex justify-content-center"> 
-                                 <button type="submit"  class="btn btn-primary">Sign In</button>
+                                  <asp:Button ID="signInButton" runat="server" Text="Sign In" OnClick="signInAgent_Click" />
                               </div>
+                               <div>
+                                   <asp:Label ID="Label3" runat="server" Text="Label" Visible="False"></asp:Label>
+                               </div>
                             <%--  <p class="text-center my-3">or sign in with other accounts?</p>
                               <div class="d-flex justify-content-center">
                                  <ul class="list-group list-group-horizontal list-group-flush">

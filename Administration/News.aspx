@@ -10,195 +10,51 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between pb-4">
                     <div class="card-body">
-
                         <div class="form-card text-start">
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="form-label">News: *</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            <asp:Panel runat="server" DefaultButton="submit">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Title: *</label>
+                                            <asp:TextBox ID="NewsTitle" runat="server" CssClass="form-control" required></asp:TextBox>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-label">New: *</label>
+                                            <asp:TextBox ID="NewsValue" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control" required></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                   <div class="col-md-12">
+                                        <div class="form-group">
+                                                            <label class="form-label">IsURL: *</label>
+                                                            <asp:RadioButtonList ID="isurl" runat="server">
+                                                                <asp:ListItem Text="True" Value="True" Inline="True" />
+                                                                <asp:ListItem Text="False" Value="False" Inline="True" />
+                                                            </asp:RadioButtonList>
+                                                        </div>
+                                                    </div>
+                            </asp:Panel>
+
+                            <asp:Button ID="submit" runat="server" Text="Save" CssClass="btn btn-primary next action-button float-end" OnClick="onSubmit" />
                         </div>
-                        <button type="button" name="next" class="btn btn-primary next action-button float-end" value="Submit">Save</button>
                     </div>
                 </div>
             </div>
             <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between pb-4">
-                    <div class="header-title">
-                        <div class="d-flex flex-wrap">
-                            <div class="media-support-user-img me-3">
-                                <img class="rounded-pill img-fluid avatar-60   p-1 ps-2" src="../assets/images/LOGO%20V3%20COLORS.svg" alt="">
-                            </div>
-                            <div class="media-support-info mt-2">
-                                <h5 class="mb-0">ODIN ESPORT</h5>
-                            </div>
-                        </div>
-                    </div>
-                    x
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle" id="dropdownMenuButton07" data-bs-toggle="dropdown" aria-expanded="false" role="button">1 Hr
-                           </span>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton07">
-                                        <a class="dropdown-item " href="javascript:void(0);">Action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Another action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Something else here</a>
-                                    </div>
-                                </div>
-                </div>
-                <div class="card-body p-0">
-                    <p class="p-3 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
+                <asp:Literal runat="server" ID="NewsHtmlLiteral"></asp:Literal>
 
-                </div>
             </div>
 
-            <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between pb-4">
-                    <div class="header-title">
-                        <div class="d-flex flex-wrap">
-                            <div class="media-support-user-img me-3">
-                                <img class="rounded-pill img-fluid avatar-60   p-1 ps-2" src="../assets/images/LOGO%20V3%20COLORS.svg" alt="">
-                            </div>
-                            <div class="media-support-info mt-2">
-                                <h5 class="mb-0">ODIN ESPORT</h5>
-                            </div>
-                        </div>
-                    </div>
-                    x
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle" id="dropdownMenuButton07" data-bs-toggle="dropdown" aria-expanded="false" role="button">1 Hr
-                           </span>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton07">
-                                        <a class="dropdown-item " href="javascript:void(0);">Action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Another action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Something else here</a>
-                                    </div>
-                                </div>
-                </div>
-                <div class="card-body p-0">
-                    <p class="p-3 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
-
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between pb-4">
-                    <div class="header-title">
-                        <div class="d-flex flex-wrap">
-                            <div class="media-support-user-img me-3">
-                                <img class="rounded-pill img-fluid avatar-60   p-1 ps-2" src="../assets/images/LOGO%20V3%20COLORS.svg" alt="">
-                            </div>
-                            <div class="media-support-info mt-2">
-                                <h5 class="mb-0">ODIN ESPORT</h5>
-                            </div>
-                        </div>
-                    </div>
-                    x
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle" id="dropdownMenuButton07" data-bs-toggle="dropdown" aria-expanded="false" role="button">1 Hr
-                           </span>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton07">
-                                        <a class="dropdown-item " href="javascript:void(0);">Action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Another action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Something else here</a>
-                                    </div>
-                                </div>
-                </div>
-                <div class="card-body p-0">
-                    <p class="p-3 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
-
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between pb-4">
-                    <div class="header-title">
-                        <div class="d-flex flex-wrap">
-                            <div class="media-support-user-img me-3">
-                                <img class="rounded-pill img-fluid avatar-60   p-1 ps-2" src="../assets/images/LOGO%20V3%20COLORS.svg" alt="">
-                            </div>
-                            <div class="media-support-info mt-2">
-                                <h5 class="mb-0">ODIN ESPORT</h5>
-                            </div>
-                        </div>
-                    </div>
-                    x
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle" id="dropdownMenuButton07" data-bs-toggle="dropdown" aria-expanded="false" role="button">1 Hr
-                           </span>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton07">
-                                        <a class="dropdown-item " href="javascript:void(0);">Action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Another action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Something else here</a>
-                                    </div>
-                                </div>
-                </div>
-                <div class="card-body p-0">
-                    <p class="p-3 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
-
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between pb-4">
-                    <div class="header-title">
-                        <div class="d-flex flex-wrap">
-                            <div class="media-support-user-img me-3">
-                                <img class="rounded-pill img-fluid avatar-60   p-1 ps-2" src="../assets/images/LOGO%20V3%20COLORS.svg" alt="">
-                            </div>
-                            <div class="media-support-info mt-2">
-                                <h5 class="mb-0">ODIN ESPORT</h5>
-                            </div>
-                        </div>
-                    </div>
-                    x
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle" id="dropdownMenuButton07" data-bs-toggle="dropdown" aria-expanded="false" role="button">1 Hr
-                           </span>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton07">
-                                        <a class="dropdown-item " href="javascript:void(0);">Action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Another action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Something else here</a>
-                                    </div>
-                                </div>
-                </div>
-                <div class="card-body p-0">
-                    <p class="p-3 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
-
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between pb-4">
-                    <div class="header-title">
-                        <div class="d-flex flex-wrap">
-                            <div class="media-support-user-img me-3">
-                                <img class="rounded-pill img-fluid avatar-60   p-1 ps-2" src="../assets/images/LOGO%20V3%20COLORS.svg" alt="">
-                            </div>
-                            <div class="media-support-info mt-2">
-                                <h5 class="mb-0">ODIN ESPORT</h5>
-                            </div>
-                        </div>
-                    </div>
-                    x
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle" id="dropdownMenuButton07" data-bs-toggle="dropdown" aria-expanded="false" role="button">1 Hr
-                           </span>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton07">
-                                        <a class="dropdown-item " href="javascript:void(0);">Action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Another action</a>
-                                        <a class="dropdown-item " href="javascript:void(0);">Something else here</a>
-                                    </div>
-                                </div>
-                </div>
-                <div class="card-body p-0">
-                    <p class="p-3 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
-
-                </div>
-            </div>
         </div>
     </div>
 </asp:Content>
+
+
+
+
+

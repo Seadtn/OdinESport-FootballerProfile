@@ -13,18 +13,20 @@ namespace OdinESport.footballeurs
 {
     public partial class Signup : System.Web.UI.Page
     {
+
+        string connectionString = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
+             connectionString = ConfigurationManager.ConnectionStrings["SQLServer"].ConnectionString;
 
+            if (!IsPostBack)
+            {
+                PopulatePositionComboBox();
+            }
         }
         protected void onSubmit(object sender, EventArgs e)
         {
-            // TAHA connectionString
-            // string connectionString = "Server=TAHA\\SQLEXPRESS; Database=OdinESport; User Id=sa; Password=Test@123456789; TrustServerCertificate=True;";
-
-            // EYA connectionString
-            //Updated by jihen 23-07-2023
-            string connectionString = ConfigurationManager.ConnectionStrings["SQLServer"].ConnectionString;//"Server=DESKTOP-533HDB7; Database=OdinESport; User Id=sa; Password=test.123; TrustServerCertificate=True;";
+            
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -33,7 +35,9 @@ namespace OdinESport.footballeurs
                     string query = string.Empty;
                     string tableName = string.Empty;
                     var picPath = string.Empty;
+                    var picPathVal = string.Empty;
                     int id = 0;
+                    int idfoot = 0;
                     connection.Open();
                     // Connection successful, you can execute SQL queries here
                     var email = Request.Form["email"];
@@ -48,6 +52,31 @@ namespace OdinESport.footballeurs
                     var weight = Request.Form["weight"];
                     string selectedValue = foot.SelectedValue;
                     var club = Request.Form["club"];
+                    var position = Request.Form["position"];
+
+                    if (string.IsNullOrWhiteSpace(email) ||
+      string.IsNullOrWhiteSpace(password) ||
+      string.IsNullOrWhiteSpace(username) ||
+      string.IsNullOrWhiteSpace(firstName) ||
+      string.IsNullOrWhiteSpace(lastName) ||
+      string.IsNullOrWhiteSpace(phoneNumber) ||
+      string.IsNullOrWhiteSpace(country) ||
+      string.IsNullOrWhiteSpace(dateOfBirth) ||
+      string.IsNullOrWhiteSpace(height) ||
+      string.IsNullOrWhiteSpace(weight) ||
+      string.IsNullOrWhiteSpace(selectedValue) ||
+      string.IsNullOrWhiteSpace(club) ||
+      string.IsNullOrWhiteSpace(position))
+                    
+                        {
+                            // Use ClientScript to show an alert on the client-side
+                            string alertScript = "alert('Please fill in all fields before submitting.');";
+                            ScriptManager.RegisterClientScriptBlock(this, GetType(), "Alert", alertScript, true);
+                            return;
+                        }
+
+                    
+                    else {
                     if (fileUpload.HasFile)
                     {
                         // Specify the directory path where you want to save the photo
@@ -63,7 +92,7 @@ namespace OdinESport.footballeurs
 
                         fileUpload.SaveAs(filePath);
                         picPath = filePath;
-
+                        picPathVal = "/Pictures/"+fileName;
 
 
                     }
@@ -72,13 +101,13 @@ namespace OdinESport.footballeurs
                                    " VALUES (@Path)";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Path", picPath);
+                        command.Parameters.AddWithValue("@Path", picPathVal);
 
 
                         // Execute the SQL query
                         command.ExecuteNonQuery();
                     }
-                    query = $"SELECT TOP 1  id FROM Photo where path = '{picPath}'";
+                    query = $"SELECT TOP 1  id FROM Photo where path = '{picPathVal}' order by  id desc";
                     SqlCommand commandGetPhot = new SqlCommand(query, connection);
                     SqlDataReader reader = commandGetPhot.ExecuteReader();
                     while (reader.Read())
@@ -88,8 +117,8 @@ namespace OdinESport.footballeurs
                     }
                     reader.Close();
                     tableName = "Footballer";
-                    query = $"INSERT INTO {tableName} (PhotoID, Email, Password, Username, FirstName, LastName, PhoneNumber, Country, DateOfBirth, Height, Weight, Foot, Club) " +
-                                  "VALUES (@PhotoId,@Email, @Password, @Username, @FirstName, @LastName, @PhoneNumber, @Country, @DateOfBirth, @Height, @Weight, @Foot, @Club)";
+                    query = $"INSERT INTO {tableName} (PhotoID, Email, Password, Username, FirstName, LastName, PhoneNumber, Country, DateOfBirth, Height, Weight, Foot, Club,PositionName) " +
+                                  "VALUES (@PhotoId,@Email, @Password, @Username, @FirstName, @LastName, @PhoneNumber, @Country, @DateOfBirth, @Height, @Weight, @Foot, @Club,@Position)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -106,11 +135,36 @@ namespace OdinESport.footballeurs
                         command.Parameters.AddWithValue("@Weight", weight);
                         command.Parameters.AddWithValue("@Foot", selectedValue);
                         command.Parameters.AddWithValue("@Club", club);
-
+                        command.Parameters.AddWithValue("@Position", position);
                         // Execute the SQL query 
                         command.ExecuteNonQuery();
 
                     }
+
+                    query = $"SELECT TOP 1  id FROM Footballer  order by  id desc";
+                    SqlCommand commandGetFOOT = new SqlCommand(query, connection);
+                    SqlDataReader reader1 = commandGetFOOT.ExecuteReader();
+                    while (reader1.Read())
+                    {
+                        idfoot = reader1.GetInt32(0);
+
+                    }
+                    reader1.Close();
+                    tableName = "FootballerDescription";
+                    query = $"INSERT INTO {tableName} (description,footballer) " +
+                                   " VALUES (@Description,@Footballer)";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Description", "");
+                        command.Parameters.AddWithValue("@Footballer", idfoot);
+
+
+                        // Execute the SQL query
+                        command.ExecuteNonQuery();
+                    }
+                          Response.Redirect("signin.aspx");
+                    }
+
                 }
                 catch (SqlException ex)
                 {
@@ -118,6 +172,40 @@ namespace OdinESport.footballeurs
                 }
             }
 
+        }
+        protected void PopulatePositionComboBox()
+        {
+            // Replace the connection string with your actual database connection string.
+            string query = "SELECT PositionName FROM [FootballerPosition]";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        // Clear any previous items in the ComboBox, if any.
+                        position.Items.Clear();
+                        
+
+                        while (reader.Read())
+                        {
+                            string positionName = reader["PositionName"].ToString();
+                            ListItem item = new ListItem(positionName, positionName);
+                            position.Items.Add(item);
+                        }
+
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions appropriately (e.g., log or display an error message).
+                    }
+                }
+            }
         }
 
     }

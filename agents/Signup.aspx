@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="OdinESport.agents.Signup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" MaintainScrollPositionOnPostBack="true" Inherits="OdinESport.agents.Signup" %>
 
 
 
@@ -70,7 +70,7 @@
                                     </a>
                                     <h2 class="mb-2 text-center">Sign Up Agent</h2>
                                     <p class="text-center">Create your ODIN ESPORT account.</p>
-                                    <form id="formwizard1" class="mt-3 text-center">
+                                    <form id="formwizard1" class="mt-3 text-center" runat="server">
                                         <ul id="top-tab-list" class="p-0 row list-inline"> 
                                             <li class="mb-2 col-lg-3 col-md-6 text-start active" id="account">
                                                 <a href="javascript:void();">
@@ -130,25 +130,25 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Email: *</label>
-                                                            <input type="email" class="form-control" name="email" placeholder="Email Id" />
+                                                            <asp:TextBox ID="email" class="form-control" placeholder="Email Id" runat="server" TextMode="Email"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Username: *</label>
-                                                            <input type="text" class="form-control" name="uname" placeholder="UserName" />
+                                                            <asp:TextBox ID="uname" class="form-control" placeholder="UserName" runat="server"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Password: *</label>
-                                                            <input type="password" class="form-control" name="pwd" placeholder="Password" />
+                                                            <asp:TextBox ID="pwd" class="form-control" TextMode="Password" placeholder="Password" runat="server"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Confirm Password: *</label>
-                                                            <input type="password" class="form-control" name="cpwd" placeholder="Confirm Password" />
+                                                            <asp:TextBox ID="cpwd" class="form-control" TextMode="Password" placeholder="Confirm Password" runat="server"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -169,31 +169,41 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">First Name: *</label>
-                                                            <input type="text" class="form-control" name="fname" placeholder="First Name" />
+                                                            <asp:TextBox ID="fname" class="form-control" placeholder="First Name" runat="server"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Last Name: *</label>
-                                                            <input type="text" class="form-control" name="lname" placeholder="Last Name" />
+                                                            <asp:TextBox ID="lname" class="form-control" placeholder="Last Name" runat="server"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Contact No.: *</label>
-                                                            <input type="text" class="form-control" name="phno" placeholder="Contact No." />
+                                                            <asp:TextBox ID="phno" class="form-control" placeholder="" runat="server"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Date of Birth: *</label>
-                                                            <input type="date" class="form-control" name="daob" placeholder="Contact No." />
+                                                            <asp:TextBox ID="daob" runat="server" placeholder="Contact No." type="date" class="form-control"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label class="form-label">Pays: *</label>
-                                                            <input type="text" class="form-control" name="phno_2" placeholder="Alternate Contact No." />
+                                                            <label class="form-label">Country: *</label>
+                                                            <asp:TextBox ID="cntry" class="form-control" placeholder="Country" runat="server"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Profile: *</label>
+                                                            <asp:RadioButtonList ID="profile" runat="server">
+                                                                <asp:ListItem Text="Manager" Value="Manager" Inline="True" />
+                                                                <asp:ListItem Text="Coach" Value="Coach" Inline="True" />
+                                                                <asp:ListItem Text="Sports team" Value="Sports team" Inline="True" />
+                                                            </asp:RadioButtonList>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -213,14 +223,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-label">Upload Your Photo:</label>
-                                                    <input type="file" class="form-control" name="pic" accept="image/*">
+                                                    <asp:FileUpload class="form-control" ID="fileUpload" runat="server" />
                                                 </div>
                                                 <%--                                    <div class="form-group">
                                     <label class="form-label">Upload Signature Photo:</label>
                                     <input type="file" class="form-control" name="pic-2" accept="image/*">
                                     </div>--%>
                                             </div>
-                                            <button type="button" name="next" class="btn btn-primary next action-button float-end" value="Submit">Submit</button>
+                                            <asp:Button ID="submit" runat="server" Text="submit" class="btn btn-primary next action-button float-end" value="Submit" OnClick="onSubmit" />
+
                                             <button type="button" name="previous" class="btn btn-dark previous action-button-previous float-end me-1" value="Previous">Previous</button>
                                         </fieldset>
                                         <fieldset>
@@ -246,7 +257,7 @@
                                                 <br>
                                                 <div class="row justify-content-center">
                                                     <div class="text-center col-7">
-                                                        <h5 class="text-center purple-text">You Have Successfully Signed Up <a href="signin.aspx" class="btn btn-success">Click here to Sign In.</a></h5>
+                                                        <h5 class="text-center purple-text">You Have Successfully Signed Up <a href="Signin.aspx" class="btn btn-success">Click here to Sign In.</a></h5>
 
                                                     </div>
                                                 </div>
@@ -313,7 +324,7 @@
 
     <!-- Form Wizard Script -->
     <script src="../../assets/js/plugins/form-wizard2.js"></script>
-
+    
     <!-- AOS Animation Plugin-->
 
     <!-- App Script -->

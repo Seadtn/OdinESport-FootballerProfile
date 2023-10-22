@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OdinESport.footballeurs
-{
-
-
-    public partial class Signup
-    {
-
+namespace OdinESport.footballeurs {
+    
+    
+    public partial class Signup {
+        
         /// <summary>
         /// formwizard1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm formwizard1;
-
+        
         /// <summary>
         /// email control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox email;
-
+        
         /// <summary>
         /// uname control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox uname;
-
+        
         /// <summary>
         /// pwd control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox pwd;
-
+        
         /// <summary>
         /// cpwd control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox cpwd;
-
+        
         /// <summary>
         /// fname control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox fname;
-
+        
         /// <summary>
         /// lname control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox lname;
-
+        
         /// <summary>
         /// phno control.
         /// </summary>
@@ -85,7 +83,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox phno;
-
+        
         /// <summary>
         /// daob control.
         /// </summary>
@@ -94,7 +92,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox daob;
-
+        
         /// <summary>
         /// cntry control.
         /// </summary>
@@ -103,7 +101,16 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox cntry;
-
+        
+        /// <summary>
+        /// position control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList position;
+        
         /// <summary>
         /// height control.
         /// </summary>
@@ -112,7 +119,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox height;
-
+        
         /// <summary>
         /// weight control.
         /// </summary>
@@ -121,7 +128,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox weight;
-
+        
         /// <summary>
         /// foot control.
         /// </summary>
@@ -130,7 +137,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList foot;
-
+        
         /// <summary>
         /// club control.
         /// </summary>
@@ -139,7 +146,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea club;
-
+        
         /// <summary>
         /// fileUpload control.
         /// </summary>
@@ -148,7 +155,7 @@ namespace OdinESport.footballeurs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileUpload;
-
+        
         /// <summary>
         /// submit control.
         /// </summary>

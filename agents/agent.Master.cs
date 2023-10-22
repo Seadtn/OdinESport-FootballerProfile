@@ -11,7 +11,16 @@ namespace OdinESport.agents
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    string idValue = Request.QueryString["id"];
+                    Session["idValue"] = idValue;
 
+
+                }
+            }
         }
 
         protected void Profil_Click(object sender, EventArgs e)

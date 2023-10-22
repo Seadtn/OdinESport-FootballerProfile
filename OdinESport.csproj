@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+    <_MigrateToProjectGuid>9dc07c9f-5aee-4d65-9ab6-1a02090780b5</_MigrateToProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -944,6 +945,7 @@
     <Content Include="Managers\Signin.aspx" />
     <Content Include="Managers\Signup.aspx" />
     <Content Include="Pictures\data.png" />
+    <Content Include="Pictures\green_circle.png" />
     <Content Include="Pictures\images %282%29.jfif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1256,6 +1258,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="footballeurs\Pictures\" />
+    <Folder Include="footballeurs\Videos\" />
+    <Folder Include="Pictures\Administrator\Pictures\" />
+    <Folder Include="Pictures\Administrator\Tutorials\" />
+    <Folder Include="Pictures\Administrator\Videos\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

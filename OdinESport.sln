@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdinESport", "OdinESport.csproj", "{7EA6C984-D286-4475-A456-D26D1AFE1DFA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OdinESportCore", "..\OdinESportCore\OdinESportCore.csproj", "{9DC07C9F-5AEE-4D65-9AB6-1A02090780B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7EA6C984-D286-4475-A456-D26D1AFE1DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EA6C984-D286-4475-A456-D26D1AFE1DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EA6C984-D286-4475-A456-D26D1AFE1DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC07C9F-5AEE-4D65-9AB6-1A02090780B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC07C9F-5AEE-4D65-9AB6-1A02090780B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC07C9F-5AEE-4D65-9AB6-1A02090780B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC07C9F-5AEE-4D65-9AB6-1A02090780B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

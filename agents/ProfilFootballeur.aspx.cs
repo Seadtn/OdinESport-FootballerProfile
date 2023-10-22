@@ -23,7 +23,7 @@ namespace OdinESport.Agents
             try
             {
                 
-                footballerId = Request.QueryString["id"];
+                footballerId = Request.QueryString["idp"];
             }
             catch (Exception ex)
             {
@@ -36,7 +36,6 @@ namespace OdinESport.Agents
                 if (footballerId != "")
                 {
 
-                   // "Server=DESKTOP-533HDB7; Database=OdinESport; User Id=sa; Password=test.123; TrustServerCertificate=True;";
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         try
@@ -66,8 +65,8 @@ namespace OdinESport.Agents
                                 fullName.InnerHtml = firstName+" "+ lastName;
                                 foot.InnerHtml = Foot;
                                 club.InnerHtml = Club;
-                                height.InnerHtml = Height;
-                                weight.InnerHtml = Weight;
+                                height.InnerHtml = Height+" m";
+                                weight.InnerHtml = Weight+"kg";
                                 reader.Close();
                                 string qry1 = "SELECT Path FROM Photo WHERE id = @PhotoID";
                                 SqlCommand cmd1 = new SqlCommand(qry1, connection);
@@ -79,7 +78,7 @@ namespace OdinESport.Agents
                                     string photoPath = reader1["Path"].ToString();
 
                                     // Update the source attribute of the image element with the fetched photo path
-                                    //imgProfile.Src = photoPath;
+                                    imgProfile.Src = photoPath;
                                 }
 
                                 reader1.Close();
@@ -97,12 +96,7 @@ namespace OdinESport.Agents
                     }
                 }
 
-                switch (Request["function"]/*.QueryString*/)
-                {
-                    case "AddPicture":
-                        AddPicture();
-                        break;
-                }
+               
             }
 
 
@@ -139,10 +133,7 @@ namespace OdinESport.Agents
                         sb.AppendLine("<a id = '" + row["id"].ToString() + "' data - fslightbox =\"gallery\" href=\"" + row["path_url"].ToString() + "\"><img src = \"" + row["path_url"].ToString() + "\" class=\"img-fluid bg-soft-info rounded\" alt=\"profile-image\"></a>");
                         j++;
                     }
-                    if (dt.Rows.Count < 8)
-                    {
-                        sb.AppendLine("<a href='javascript:void(0);' onclick='openFileInput()'><img src='add2.jpg' class='img-fluid bg-soft-info rounded' alt='profile-image'></a>");
-                    }
+                   
                     sb.AppendLine("</div></div>");
                     // Assign the generated HTML markup to the Literal control
                     picturesHtmlLiteral.Text = sb.ToString();
@@ -182,13 +173,7 @@ namespace OdinESport.Agents
 
                         j++;
                     }
-                    if (dt.Rows.Count < 4)
-                    {
-                        // class=\"addBlock\"
-                        //    sb.AppendLine("<div id=\"addvid\"  data-fslightbox =\"gallery\"  onclick=\"openFileInput()\" id=\"uploadpic\" runat=\"server\"><img src=\"add2.jpg\" class=\"img-fluid bg-soft-info rounded\" alt=\"profile - image\"></div>");
-                        sb.AppendLine("<a href='javascript:void(0);' onclick='openFileInput()'><img src='add2.jpg' class='img-fluid bg-soft-info rounded' alt='profile-image'></a>");
-
-                    }
+                   
                     sb.AppendLine("</div></div>");
                     // Assign the generated HTML markup to the Literal control
                     videosHtmlLiteral.Text = sb.ToString();
@@ -201,18 +186,6 @@ namespace OdinESport.Agents
         }
 
 
-        public void AddPicture()
-        {
-            string filename = Request["filename"].ToString();
-            string currentDirectory = Environment.CurrentDirectory;
-            if (fileUpload.HasFile) { }
-            //// Combine the current directory with the image file name to get the full path.
-            //string imageFullPath = Path.Combine(currentDirectory, Path.GetFileName(filename));
-
-            //// Copy the image file to the current folder.
-            //File.Copy(filename, imageFullPath);
-            //fileUpload.Hasfile
-
-        }
+       
     }
 }

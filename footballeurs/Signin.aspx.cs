@@ -19,7 +19,7 @@ namespace OdinESport.footballeurs
         {
             // open connection with DB
             //Updated by jihen 23-07-2023
-            string connectionString = ConfigurationManager.ConnectionStrings["SQLServer"].ConnectionString;//"Server=DESKTOP-533HDB7; Database=OdinESport; User Id=sa; Password=test.123; TrustServerCertificate=True;";
+            string connectionString = ConfigurationManager.ConnectionStrings["SQLServer"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try

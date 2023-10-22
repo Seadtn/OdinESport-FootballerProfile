@@ -2,82 +2,17 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>ODIN ESPORT | Profil</title>
-    <style>
 
-        .addBlock {
-    width: 150px;
-    height: 150px;
-    margin: 10px;
-    border: 1px dashed #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <script>
-  function openFileInput() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.style.display = 'none';
-    input.addEventListener('change', handleFileUpload);
-    document.body.appendChild(input);
-    input.click();
-  }
-
-  function handleFileUpload(event) {
-    const file = event.target.files[0];
-      if (!file) return;
-        const formData = new FormData();
-    formData.append('file', file);
-          $.ajax({
-        url: 'Profil.aspx?function=AddPicture&filename='+file.name,
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(data) {
-            // Handle the success response here
-            console.log('Upload success:', data);
-        },
-        error: function(xhr, status, error) {
-            // Handle the error here
-            console.error('Upload error:', error);
-        },
-        cache: false
-    });
-  
-  }
-
-  function appendImageToContainer(imageURL) {
-    // Create a new image block and append it to the container.
-    const imageContainer = document.getElementById('imageContainer');
-    const newImageBlock = document.createElement('div');
-    newImageBlock.className = 'imageBlock';
-    const newImage = document.createElement('img');
-    newImage.src = imageURL;
-    newImage.alt = 'New Image';
-    newImageBlock.appendChild(newImage);
-    imageContainer.appendChild(newImageBlock);
-  }
-
-
-
-
-
-
-    </script>
+ 
     <div class="conatiner-fluid content-inner pb-0">
         <div class="row">
 
           <div class="col-lg-4">
                 <div class="card">
                 <asp:Literal runat="server" ID="picturesHtmlLiteral"></asp:Literal>   
-                <asp:FileUpload ID="fileUpload" runat="server" />
-
+                    f
                 </div>
                 <div class="card">  
                 <asp:Literal runat="server" ID="videosHtmlLiteral"></asp:Literal>
@@ -97,7 +32,7 @@
                             <div class="card-body">
                                 <div class="text-center">
                                     <div class="user-profile">
-                                        <img src="../assets/images/avatars/LionelMessi.jpg" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
+                                        <img runat="server" ID="imgProfile" alt="profile-img" class="rounded-pill avatar-130 img-fluid" />
                                     </div>
                                     <div class="mt-3">
                                         

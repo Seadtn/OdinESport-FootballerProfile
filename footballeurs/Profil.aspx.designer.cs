@@ -22,15 +22,6 @@ namespace OdinESport.footballeurs {
         protected global::System.Web.UI.WebControls.Literal picturesHtmlLiteral;
         
         /// <summary>
-        /// fileUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
-        
-        /// <summary>
         /// videosHtmlLiteral control.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,15 @@ namespace OdinESport.footballeurs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFullName;
+        
+        /// <summary>
+        /// descriptionTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox descriptionTextBox;
         
         /// <summary>
         /// txtEmail control.
@@ -130,6 +130,15 @@ namespace OdinESport.footballeurs {
         protected global::System.Web.UI.WebControls.TextBox txtCountry;
         
         /// <summary>
+        /// position control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList position;
+        
+        /// <summary>
         /// txtHeight control.
         /// </summary>
         /// <remarks>
@@ -155,5 +164,23 @@ namespace OdinESport.footballeurs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtClub;
+        
+        /// <summary>
+        /// fileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
+        
+        /// <summary>
+        /// Save control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Save;
     }
 }
